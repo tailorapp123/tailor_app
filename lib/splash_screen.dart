@@ -6,7 +6,9 @@ import 'package:flutter/services.dart' show ByteData, SystemUiOverlayStyle, root
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taylor_app/modules/home/screens/user_home_page.dart';
 import 'package:taylor_app/utils/base_state.dart';
+import 'package:taylor_app/utils/core/core.dart';
 
+import 'modules/auth/screens/gender_selection.dart';
 import 'modules/auth/screens/login_screen.dart';
 import 'modules/home/home_controller/home_bloc.dart';
 
@@ -95,9 +97,9 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 Center(
                   child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
-                    height: 100,
-                    child: Icon(Icons.home,color: Colors.red,size: 50,)
+                    duration: Duration(seconds: 3),
+                    height: deviceHeight(context),
+                    child:Image.asset('assets/gif/Intro_animation.gif',fit: BoxFit.fill,)
                   ),
                 ),
               ],
@@ -110,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> initialize() async {
     // getDeviceInfo();
-    await Future.delayed(const Duration(milliseconds: 2000));
+    await Future.delayed(const Duration(milliseconds: 3000));
 
     if(isLoggedIn){
       navigateToHomePage();
@@ -136,7 +138,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => LoginScreen(),
+        pageBuilder: (_, __, ___) => GenderSelectionPage(),
         transitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (_, a, __, c) =>
             FadeTransition(opacity: a, child: c),

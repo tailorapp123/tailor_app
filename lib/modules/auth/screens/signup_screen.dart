@@ -87,7 +87,7 @@ class _SignUpScreenState extends State<SignupScreen> {
     return Stack(
       children: <Widget>[
         Container(
-          color: Colors.white,
+          color: MyColors().backGroundColor,
           padding: const EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -105,14 +105,12 @@ class _SignUpScreenState extends State<SignupScreen> {
                     child: Column(
                       //crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        // VerticalSpace(height: deviceHeight(context)*0.10,),
+                        VerticalSpace(height: deviceHeight(context)*0.10,),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             //BODY WIDGETS
-                            VerticalSpace(
-                              height: 40,
-                            ),
+
                             Container(
                                 child: textCustom(
                                     "Create your account", 22,
@@ -124,9 +122,7 @@ class _SignUpScreenState extends State<SignupScreen> {
                                   "Enter your details to continue", 15,
                                   color: MyColors().black),
                             ),
-                            VerticalSpace(
-                              height: 26,
-                            ),
+                            VerticalSpace(height: deviceHeight(context)*0.10,),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -184,18 +180,7 @@ class _SignUpScreenState extends State<SignupScreen> {
                   ],
                 ),
               ).onTap(() async {
-                var res = await Navigator.push(
-                  context,
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) =>
-                        UserHomePage(),
-                        // LoginScreen(isFrom: 'SIGNUP',),
-                    transitionDuration:
-                    Duration(milliseconds: 500),
-                    transitionsBuilder: (_, a, __, c) =>
-                        FadeTransition(opacity: a, child: c),
-                  ),
-                );
+
               }),
               VerticalSpace(
                 height: 20,
@@ -212,18 +197,22 @@ class _SignUpScreenState extends State<SignupScreen> {
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 12),
       child: CustomButton(
         onClick: () async {
-          //   print(   "CheckEmail:::${emailController.text}");
-          //   if (emailController.text.isEmpty){
-          //     Validations.validateEmail(emailController.text);
-          //
-          //   }else(
-          //       showError(context, "Please Enter Valid Mail Id")
-          //   );
-
-
+          var res = await Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) =>
+                  UserHomePage(),
+              // LoginScreen(isFrom: 'SIGNUP',),
+              transitionDuration:
+              Duration(milliseconds: 500),
+              transitionsBuilder: (_, a, __, c) =>
+                  FadeTransition(opacity: a, child: c),
+            ),
+          );
         },
         buttonText: "Create Account",
-        isDisabled: nameController.text.isNotEmpty && mobileController.text.length==10 && gender>0 && emailController.text.isNotEmpty && userNameController.text.isNotEmpty && passwordController.text.isNotEmpty ? false : true,
+        isDisabled:false,
+        //nameController.text.isNotEmpty && mobileController.text.length==10 && gender>0 && emailController.text.isNotEmpty && userNameController.text.isNotEmpty && passwordController.text.isNotEmpty ? false : true,
       ),
     );
   }
@@ -233,11 +222,11 @@ class _SignUpScreenState extends State<SignupScreen> {
       width: deviceWidth(context),
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().black),
-        borderRadius: BorderRadius.circular(12.0),
-        color: MyColors().white,
-      ),
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: MyColors().buttonColor),
+          borderRadius: BorderRadius.circular(16.0),
+          color: MyColors().backGroundColor,
+        ),
       child: Container(
         //  width: deviceWidth(context) * 0.54,
         child: TextField(
@@ -267,9 +256,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().black),
-        borderRadius: BorderRadius.circular(12.0),
-        color: MyColors().white,
+        border: Border.all(width: 1, color: MyColors().buttonColor),
+        borderRadius: BorderRadius.circular(16.0),
+        color: MyColors().backGroundColor,
       ),
       child: Container(
         //  width: deviceWidth(context) * 0.54,
@@ -299,9 +288,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().black),
-        borderRadius: BorderRadius.circular(12.0),
-        color: MyColors().white,
+        border: Border.all(width: 1, color: MyColors().buttonColor),
+        borderRadius: BorderRadius.circular(16.0),
+        color: MyColors().backGroundColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -345,9 +334,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       width: deviceWidth(context),
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().black),
-        borderRadius: BorderRadius.circular(12.0),
-        color: MyColors().white,
+        border: Border.all(width: 1, color: MyColors().buttonColor),
+        borderRadius: BorderRadius.circular(16.0),
+        color: MyColors().backGroundColor,
       ),
       child: Container(
         width: deviceWidth(context) * 0.54,
@@ -376,9 +365,9 @@ class _SignUpScreenState extends State<SignupScreen> {
 
       padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().black),
+        border: Border.all(width: 1, color: MyColors().buttonColor),
         borderRadius: BorderRadius.circular(16.0),
-        color: MyColors().white,
+        color: MyColors().backGroundColor,
       ),
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,

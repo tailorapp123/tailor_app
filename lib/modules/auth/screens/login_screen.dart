@@ -89,7 +89,7 @@ class _LoginScreeState extends State<LoginScreen> {
       child: Stack(
         children: <Widget>[
           Container(
-            color: Colors.white,
+            color: MyColors().backGroundColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -98,7 +98,7 @@ class _LoginScreeState extends State<LoginScreen> {
                   children: [
                     VerticalSpace(height: deviceHeight(context)*0.10,),
                     Container(margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: textCustom("Hello", 22,color: MyColors().black,fontWeight: FontWeight.w500)).onTap(() {
+                        child: textCustom("Hello", 22,color: MyColors().black,fontWeight: FontWeight.bold)).onTap(() {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen()));
                     }),
                     Container(
@@ -126,9 +126,9 @@ class _LoginScreeState extends State<LoginScreen> {
                                 margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 16),
                                 padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
                                 decoration: BoxDecoration(
-                                  border: Border.all(width: 1, color: MyColors().black),
+                                  border: Border.all(width: 1, color: MyColors().buttonColor),
                                   borderRadius: BorderRadius.circular(16.0),
-                                  color: MyColors().white,
+                                  color: MyColors().backGroundColor,
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,6 +136,7 @@ class _LoginScreeState extends State<LoginScreen> {
                                     Row(
                                       children: [
                                         Container(
+                                          color:Colors.transparent,
                                           width: deviceWidth(context) * 0.54,
                                           child: TextField(
                                             style: TextStyle(color: Colors.black),
@@ -170,9 +171,9 @@ class _LoginScreeState extends State<LoginScreen> {
 
                                 padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
                                 decoration: BoxDecoration(
-                                  border: Border.all(width: 1, color: MyColors().black),
+                                  border: Border.all(width: 1, color: MyColors().buttonColor),
                                   borderRadius: BorderRadius.circular(16.0),
-                                  color: MyColors().white,
+                                  color: MyColors().backGroundColor,
                                 ),
                                 child: Row(
                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -220,7 +221,7 @@ class _LoginScreeState extends State<LoginScreen> {
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 24,vertical: 10),
                                 alignment: Alignment.centerRight,
-                                child: textCustom("Forgot Password?",14, color: MyColors().white,).onTap(() {
+                                child: textCustom("Forgot Password?",14, color: MyColors().black,fontWeight: FontWeight.bold).onTap(() {
 
                                 }),
                               ),

@@ -25,7 +25,7 @@ class _CustomButtonState extends State<CustomButton> {
                 borderRadius: BorderRadius.circular(10), // Set this to 0 for a rectangular shape
               ),
             primary: Colors.white,
-            backgroundColor: widget.isDisabled?MyColors().buttonDisabledColor:MyColors().buttonColor.withOpacity(0.9)
+            backgroundColor: widget.isDisabled?MyColors().buttonDisabledColor:MyColors().buttonColor
           ),
 
           // elevation: 2.0,

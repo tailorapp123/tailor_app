@@ -84,7 +84,7 @@ class _UserHomePageState extends State<UserHomePage> {
 
   Widget buildUI(state, context) {
     return Container(
-      color: MyColors().white,
+      color: MyColors().backGroundColor,
       child: Stack(
         children: <Widget>[
           Container(
@@ -98,8 +98,7 @@ class _UserHomePageState extends State<UserHomePage> {
                   child: Column(
                     children: [
                       backButtonWidget(),
-                      VerticalSpace(),
-                      statusTabWidget(),
+                      // statusTabWidget(),
                     ],
                   ),
                 ),
@@ -127,6 +126,31 @@ class _UserHomePageState extends State<UserHomePage> {
                   ),
                 ),
                 //BOTTOM WIDGETS
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+                  color: MyColors().buttonColor,
+                  width: deviceHeight(context),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          textCustom('Cart Value', 14,color: Colors.white),
+                          textCustom('800', 18,fontWeight: FontWeight.bold,color: Colors.white)
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50)
+                        ),
+                        child: Icon(Icons.arrow_forward_ios,color: Colors.deepOrange,),
+                      )
+                    ],
+                  ),
+                )
 
               ],
             ),
@@ -145,29 +169,19 @@ class _UserHomePageState extends State<UserHomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              const  Icon(Icons.arrow_back_ios,color: Colors.black,),
-              textCustom('Items', 14,color: Colors.black),
-            ],
-          ).onTap((){
+          textCustom('Products', 16,color: Colors.black,fontWeight: FontWeight.bold).onTap((){
             Navigator.pop(context);
           }),
-
-          Row(
+          Column(
             children: [
-              Icon(Icons.shopping_cart),
-              HorizontalSpace(),
-              Icon(Icons.person_sharp),
-
+              Icon(Icons.person_sharp,size: 30,),
+              VerticalSpace(),
+              textCustom('Shiva', 14,fontWeight: FontWeight.bold)
             ],
           ),
         ],
       ),
-    ).onTap((){
-
-      // Navigator.pop(context);
-    });
+    );
   }
 
 
@@ -280,17 +294,31 @@ class _UserHomePageState extends State<UserHomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            textCustom('T shirt', 14),
+                            textCustom('T shirt', 16,fontWeight: FontWeight.bold),
                             VerticalSpace(),
                             textCustom('500', 14),
                             VerticalSpace(),
                             Row(
                               children: [
-                                Icon(Icons.remove),
+                                Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color:MyColors().buttonDisabledColor,
+                                      border: Border.all(width: 1, color: MyColors().buttonColor),
+                                    ),
+                                    padding:const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
+                                    child: Icon(Icons.remove,size: 18,)),
                                 HorizontalSpace(),
-                                textCustom('2', 16),
+                                textCustom('2', 18,fontWeight: FontWeight.bold),
                                 HorizontalSpace(),
-                                Icon(Icons.add)
+                                Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color:MyColors().buttonDisabledColor,
+                                      border: Border.all(width: 1, color: MyColors().buttonColor),
+                                    ),
+                                    padding:const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
+                                    child: Icon(Icons.add,size: 18,))
                               ],
                             )
                           ],

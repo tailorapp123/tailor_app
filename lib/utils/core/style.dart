@@ -1,66 +1,5 @@
 import 'package:flutter/material.dart';
 
-class BaseTheme {
-  Color primaryColor = HexColor('#FFAB00');
-  Color backGroundColour = HexColor("#F5F5F5");
-  Color secondaryColor = HexColor('#FFAB00');
-  Color buttonBorderColor = HexColor('#5146E2');
-  Color darkhighlight = HexColor("#0267C1");
-  Color highlight=Color(0xffffffff);
-  Color dividerColor = HexColor("#646465");
-  Color greenColor = HexColor("#36B37E");
-
-  Color textColor = Colors.black;
-  Color textDisableColor = Colors.grey;
-  Color textHintColor = Colors.grey;
-  Color errorTextColor = Colors.red;
-  Color color1 = HexColor('#FAFAFB',);
-  Color textLightColor = HexColor('#E6F0F9',);
-  Color orangeColor = HexColor('#FF5630',);
-  Color textHeadingColor = HexColor('#626262',);
-  Color textGreenColor = HexColor('#22C55E',);
-  Color ecommerce_orange_color = HexColor("#F79824");
-  Color ecommerce_orange_color_opacity = HexColor("#F79824");
-  Color textSecondary = HexColor("#ffffff");
-  Color appBarColor = HexColor("#F6F8FB");
-  Color buttonColor = HexColor('#F2994A');
-  Color secondaryTextColor = HexColor('#FFAB00');
-  Color buttonTextColor = Colors.white;
-
-}
-
-class Theme1 extends BaseTheme {
-  Color primaryColor = HexColor('#FFAB00');
-  Color backGroundColour = HexColor("#F5F5F5");
-  Color secondaryColor = HexColor('#E6F0F9');
-  Color buttonBorderColor = HexColor('#5146E2');
-  Color darkhighlight = HexColor("#0267C1");
-  Color dividerColor = HexColor("#646465");
-  Color textColor = Colors.black;
-  Color textDisableColor = Colors.grey;
-  Color textHintColor = Colors.grey;
-  Color errorTextColor = Colors.red;
-  Color color1 = HexColor('#56CCF2',);
-  Color buttonColor = HexColor('#F2994A');
-
-}
-
-class Theme2 extends BaseTheme {
-  Color primaryColor = HexColor('#FFAB00');
-  Color backGroundColour = HexColor("#A5A5A5");
-  Color secondaryColor = HexColor('#E6F0F9');
-  Color buttonBorderColor = HexColor('#5146E2');
-  Color darkhighlight = HexColor("#0267C1");
-  Color dividerColor = HexColor("#646465");
-  Color textColor = Colors.red;
-  Color textDisableColor = Colors.grey;
-  Color textHintColor = Colors.grey;
-  Color errorTextColor = Colors.red;
-  Color color1 = HexColor('#56CCF2',);
-  Color buttonColor = HexColor('#F2994A');
-
-}
-
 
 class CustomTextStyle {
    TextStyle whiteBold16(BuildContext context) {
@@ -80,6 +19,7 @@ class HexColor extends Color {
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
+
 class MyColors {
    Color color1 = HexColor('#56CCF2',);
    Color color2 = HexColor('#BB6BD9',);
@@ -91,16 +31,15 @@ class MyColors {
    Color green200 = HexColor("#58C094");
    Color grey200 = HexColor("#D9D9D9");
 
-
    Color primaryColor = HexColor('#FFAB00',);
-   Color buttonColor = HexColor('#DB7B31',);
-   Color buttonDisabledColor = HexColor('#DCB89D',);
+   Color buttonColor = Colors.deepOrange.withOpacity(0.6);
+   Color buttonDisabledColor = Colors.deepOrange.withOpacity(0.4);
    Color primaryColorWithOpacity = Color(int.parse("0x001B42")).withOpacity(0.6);
    Color primaryColorWithLessOpacity = Color(int.parse("0x001B42"))
       .withOpacity(0.2);
    Color textPrimary = HexColor("#333333");
    Color textSecondary = HexColor("#ffffff");
-   Color backGroundColor = HexColor("#121020");
+   Color backGroundColor = Colors.deepOrange.withOpacity(0.1);
    Color orangeColor = HexColor("#FF6B00");
    Color secondaryColor = HexColor("#04CE5E");
    Color white = Colors.white;
@@ -217,28 +156,4 @@ class MyColors {
    Color box_bg_color = HexColor("#F8FFFE");
    Color green = Colors.greenAccent;
 
-  //ECOMMERCE COLORS
-   Color ecommerce_orange_color = HexColor("#F79824");
-
-
-   //FITNESS COLORS
-   Color fit_onboard_text_color = HexColor("#FFD8BA");
-
-  var scrheight = 813.0;
-  var scrwidth = 375.0;
-
-  double eight = 0.0213;
-  double ten = 0.0267;
-  double twelve = 0.032;
-  double thirty = 0.08;
-  double fourteen = 0.0373;
-  double fifteen = 0.04;
-  double sixteen = 0.042666;
-  double eighteen = 0.048;
-  double twenty = 0.053;
-  double twentysix = 0.0693;
-  double twentyeight = 0.07466;
-  double twentyfour = 0.064;
-  double thirtysix = 0.096;
-  double fourty = 0.10667;
 }
