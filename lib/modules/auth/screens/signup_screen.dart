@@ -569,7 +569,7 @@ class _SignUpScreenState extends State<SignupScreen> {
       context,
       PageRouteBuilder(
         pageBuilder: (_, __, ___) => LoginScreen(
-          isFrom: 'SIGNUP',
+          screen: 'SIGNUP',
         ),
         transitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (_, a, __, c) =>

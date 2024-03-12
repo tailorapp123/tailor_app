@@ -12,8 +12,7 @@ import '../auth_controller/auth_bloc.dart';
 import 'otp_screens.dart';
 
 class GenderSelectionPage extends StatefulWidget {
-  final String? isFrom;
-  const GenderSelectionPage({Key? key,this.isFrom}) : super(key: key);
+  const GenderSelectionPage({Key? key,}) : super(key: key);
 
   @override
   State<GenderSelectionPage> createState() => _GenderSelectionPageState();
@@ -136,6 +135,7 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
                                     setState(() {
 
                                     });
+                                    print(selectedGender);
                                   }),
                                   Column(
                                     children: [
@@ -147,6 +147,7 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
                                     setState(() {
 
                                     });
+                                    print(selectedGender);
                                   }),
                                 ],
                               )
@@ -169,7 +170,7 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
                       var res = await Navigator.push(
                         context,
                         PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => LoginScreen(),
+                          pageBuilder: (_, __, ___) => SignupScreen(),
                           transitionDuration: Duration(milliseconds: 500),
                           transitionsBuilder: (_, a, __, c) =>
                               FadeTransition(opacity: a, child: c),
@@ -178,7 +179,7 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
                   },
                     buttonText: "Save",
                     height: 60,
-                    isDisabled: false,),
+                    isDisabled: selectedGender.isEmpty,),
                 ),
                 VerticalSpace(height: 24,),
 

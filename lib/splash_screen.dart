@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show ByteData, SystemUiOverlayStyle, rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taylor_app/modules/home/screens/login_type.dart';
 import 'package:taylor_app/modules/home/screens/user_home_page.dart';
 import 'package:taylor_app/utils/base_state.dart';
 import 'package:taylor_app/utils/core/core.dart';
@@ -138,7 +139,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => GenderSelectionPage(),
+        pageBuilder: (_, __, ___) => LoginTypePage(),
         transitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (_, a, __, c) =>
             FadeTransition(opacity: a, child: c),

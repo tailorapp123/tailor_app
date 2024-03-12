@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taylor_app/modules/auth/screens/gender_selection.dart';
 import 'package:taylor_app/modules/auth/screens/signup_screen.dart';
+import 'package:taylor_app/modules/home/screens/admin_home_page.dart';
+import 'package:taylor_app/modules/home/screens/taylor_home_page.dart';
 import 'package:taylor_app/utils/base_state.dart';
 import '../../../utils/KeyboardUtils.dart';
 import '../../../utils/core/core.dart';
@@ -11,8 +14,8 @@ import '../auth_controller/auth_bloc.dart';
 import 'otp_screens.dart';
 
 class LoginScreen extends StatefulWidget {
-  String? isFrom;
-  LoginScreen({Key? key,this.isFrom}) : super(key: key);
+  final String? screen;
+  LoginScreen({Key? key,this.screen}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreeState();
@@ -62,17 +65,7 @@ class _LoginScreeState extends State<LoginScreen> {
         );
       } else if (state is DataLoaded) {
         //ADD YOUR FUNCTIONALITY
-        if(state.event == 'SignInEvent'){
-          if(state.data!=null){
-            if(state.data == "User doesn't exits, Please try again!"){
-              // navigateToSignUpScreen();
-            }else{
-              navigateToHomeScreen();
-            }
-          }else{
-            showError(context, 'Something went wrong');
-          }
-        }
+
       }
     }, child: BlocBuilder<AuthBloc, BaseState>(
       bloc: _bloc,
@@ -240,9 +233,14 @@ class _LoginScreeState extends State<LoginScreen> {
 
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 16),
-                  child: CustomButton(onClick: () async {
-
-                  }, buttonText: "Login",height: 60,isDisabled: false,),
+                  child: CustomButton(
+                    onClick: () async {
+                      navigateToHomeScreen();
+                  },
+                    buttonText: "Login",
+                    height: 60,
+                    isDisabled: false,)
+                  ,
                 ),
                 VerticalSpace(height: 24,),
                 Container(
@@ -258,9 +256,7 @@ class _LoginScreeState extends State<LoginScreen> {
                   var res = await Navigator.push(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (_, __, ___) => SignupScreen(
-                        isFrom: 'LOGIN',
-                      ),
+                      pageBuilder: (_, __, ___) => GenderSelectionPage(),
                       transitionDuration: Duration(milliseconds: 500),
                       transitionsBuilder: (_, a, __, c) =>
                           FadeTransition(opacity: a, child: c),
@@ -307,32 +303,44 @@ class _LoginScreeState extends State<LoginScreen> {
     // WRITE YOUR REFRESH LOGIC
   }
 
+
+
   navigateToHomeScreen() async {
-    var res = await Navigator.push(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (_, __, ___) => UserHomePage(),
-        transitionDuration: Duration(milliseconds: 500),
-        transitionsBuilder: (_, a, __, c) =>
-            FadeTransition(opacity: a, child: c),
-      ),
-    );
+    if(widget.screen == 'CUSTOMER'){
+      var res = await Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => UserHomePage(),
+          transitionDuration: Duration(milliseconds: 500),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+        ),
+      );
+    }else if(widget.screen == 'TAILOR'){
+      var res = await Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => TaylorHomePage(),
+          transitionDuration: Duration(milliseconds: 500),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+        ),
+      );
+    }else{
+      var res = await Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => AdminHomePage(),
+          transitionDuration: Duration(milliseconds: 500),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+        ),
+      );
+    }
+
   }
 
 
-  // navigateToSignUpScreen() async {
-  //   var res = await Navigator.push(
-  //     context,
-  //     PageRouteBuilder(
-  //       pageBuilder: (_, __, ___) => SignUpScreen(),
-  //       transitionDuration: Duration(milliseconds: 500),
-  //       transitionsBuilder: (_, a, __, c) =>
-  //           FadeTransition(opacity: a, child: c),
-  //     ),
-  //   );
-  // }
-
-  //API CALLS
 
 
 }

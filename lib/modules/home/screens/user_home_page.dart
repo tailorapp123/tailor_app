@@ -6,6 +6,7 @@ import '../../../../utils/core/core.dart';
 import '../../../utils/core/style.dart';
 import '../../common/tabs_model.dart';
 import '../home_controller/home_bloc.dart';
+import 'cart_page.dart';
 
 class UserHomePage extends StatefulWidget {
   UserHomePage({Key? key}) : super(key: key);
@@ -111,11 +112,11 @@ class _UserHomePageState extends State<UserHomePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
-                            VerticalSpace(height: deviceHeight(context)*0.03,),
+                            // VerticalSpace(height: deviceHeight(context)*0.02,),
                             Column(
                               children:  [
                                 //BODY WIDGETS
-                                memberShipsWidget(),
+                                productListWidget(),
                               ],
                             ),
 
@@ -126,31 +127,7 @@ class _UserHomePageState extends State<UserHomePage> {
                   ),
                 ),
                 //BOTTOM WIDGETS
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
-                  color: MyColors().buttonColor,
-                  width: deviceHeight(context),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          textCustom('Cart Value', 14,color: Colors.white),
-                          textCustom('800', 18,fontWeight: FontWeight.bold,color: Colors.white)
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(50)
-                        ),
-                        child: Icon(Icons.arrow_forward_ios,color: Colors.deepOrange,),
-                      )
-                    ],
-                  ),
-                )
+                costBarWidget()
 
               ],
             ),
@@ -179,6 +156,44 @@ class _UserHomePageState extends State<UserHomePage> {
               textCustom('Shiva', 14,fontWeight: FontWeight.bold)
             ],
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget costBarWidget(){
+    return  Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+      color: MyColors().buttonColor,
+      width: deviceHeight(context),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              textCustom('Cart Value', 14,color: Colors.white),
+              textCustom('800', 18,fontWeight: FontWeight.bold,color: Colors.white)
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(50)
+            ),
+            child: Icon(Icons.arrow_forward_ios,color: Colors.deepOrange,),
+          ).onTap(() async {
+            var res = await Navigator.push(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (_, __, ___) => CartPage(),
+                transitionDuration: Duration(milliseconds: 500),
+                transitionsBuilder: (_, a, __, c) =>
+                    FadeTransition(opacity: a, child: c),
+              ),
+            );
+          })
         ],
       ),
     );
@@ -263,7 +278,7 @@ class _UserHomePageState extends State<UserHomePage> {
     );
   }
 
-  Widget memberShipsWidget(){
+  Widget productListWidget(){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -280,7 +295,7 @@ class _UserHomePageState extends State<UserHomePage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.white.withOpacity(0.4),
-                        border: Border.all(color: MyColors().black,width: 0.2)
+                        border: Border.all(color: Colors.deepOrange,width: 0.4)
                     ),
                     child:Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -288,7 +303,7 @@ class _UserHomePageState extends State<UserHomePage> {
                       children: [
                         ClipRRect(
                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset('assets/sihrt_image.jpg')
+                            child: Image.asset('assets/sihrt_image.jpg',width: 80,)
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
