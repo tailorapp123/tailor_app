@@ -87,7 +87,9 @@ class _SignUpScreenState extends State<SignupScreen> {
     return Stack(
       children: <Widget>[
         Container(
-          color: MyColors().backGroundColor,
+          decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
+          ),
           padding: const EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -180,7 +182,15 @@ class _SignUpScreenState extends State<SignupScreen> {
                   ],
                 ),
               ).onTap(() async {
-
+                var res = await Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => LoginScreen(),
+                    transitionDuration: Duration(milliseconds: 500),
+                    transitionsBuilder: (_, a, __, c) =>
+                        FadeTransition(opacity: a, child: c),
+                  ),
+                );
               }),
               VerticalSpace(
                 height: 20,

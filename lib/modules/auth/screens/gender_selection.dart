@@ -88,7 +88,9 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
       child: Stack(
         children: <Widget>[
           Container(
-            color: MyColors().backGroundColor,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -170,7 +172,7 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
                       var res = await Navigator.push(
                         context,
                         PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => SignupScreen(),
+                          pageBuilder: (_, __, ___) => UserHomePage(),
                           transitionDuration: Duration(milliseconds: 500),
                           transitionsBuilder: (_, a, __, c) =>
                               FadeTransition(opacity: a, child: c),

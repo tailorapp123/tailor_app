@@ -77,7 +77,10 @@ class _LoginTypePageState extends State<LoginTypePage> {
   Widget buildUI(state, context) {
     return SafeArea(
       child: Container(
-        color: MyColors().backGroundColor,
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
+        ),
+        // color: MyColors().backGroundColor,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

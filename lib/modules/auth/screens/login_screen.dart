@@ -82,7 +82,9 @@ class _LoginScreeState extends State<LoginScreen> {
       child: Stack(
         children: <Widget>[
           Container(
-            color: MyColors().backGroundColor,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -256,7 +258,7 @@ class _LoginScreeState extends State<LoginScreen> {
                   var res = await Navigator.push(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (_, __, ___) => GenderSelectionPage(),
+                      pageBuilder: (_, __, ___) => SignupScreen(),
                       transitionDuration: Duration(milliseconds: 500),
                       transitionsBuilder: (_, a, __, c) =>
                           FadeTransition(opacity: a, child: c),
@@ -310,7 +312,7 @@ class _LoginScreeState extends State<LoginScreen> {
       var res = await Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (_, __, ___) => UserHomePage(),
+          pageBuilder: (_, __, ___) => GenderSelectionPage(),
           transitionDuration: Duration(milliseconds: 500),
           transitionsBuilder: (_, a, __, c) =>
               FadeTransition(opacity: a, child: c),
