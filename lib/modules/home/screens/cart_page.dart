@@ -19,6 +19,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   final HomeBloc _bloc = HomeBloc(initialState: Loading());
   _CartPageState();
+  bool isVisible  = false;
 
 
 
@@ -179,63 +180,79 @@ class _CartPageState extends State<CartPage> {
           MediaQuery.removePadding(
             context: context,removeTop: true,
             child: ListView.builder(
-                itemCount: 4,
+                itemCount: 2,
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context,index){
-                  return Container(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      padding:const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.white.withOpacity(0.4),
-                          border: Border.all(color: Colors.deepOrange,width: 0.4)
-                      ),
-                      child:Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              textCustom('T shirt', 16,fontWeight: FontWeight.bold),
-                            ],
+                  return Column(
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.only(bottom: 16),
+                          padding:const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.white.withOpacity(0.4),
+                              // border: Border.all(color: Colors.deepOrange,width: 0.4)
                           ),
-                          Column(
+                          child:Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              textCustom('500', 18,fontWeight: FontWeight.bold),
-                              VerticalSpace(),
                               Row(
                                 children: [
-                                  Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color:MyColors().buttonDisabledColor,
-                                        border: Border.all(width: 1, color: MyColors().buttonColor),
-                                      ),
-                                      padding:const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
-                                      child: Icon(Icons.remove,size: 18,)),
+                                  ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.asset('assets/sihrt_image.jpg',width: 80,)
+                                  ),
                                   HorizontalSpace(),
-                                  textCustom('2', 18,fontWeight: FontWeight.bold),
-                                  HorizontalSpace(),
-                                  Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color:MyColors().buttonDisabledColor,
-                                        border: Border.all(width: 1, color: MyColors().buttonColor),
-                                      ),
-                                      padding:const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
-                                      child: Icon(Icons.add,size: 18,))
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      textCustom('Men Kurtha', 16,fontWeight: FontWeight.bold),
+                                      textCustom('A nice product', 16,fontWeight: FontWeight.bold),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  textCustom('500', 18,fontWeight: FontWeight.bold),
+                                  VerticalSpace(),
+                                  Row(
+                                    children: [
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(12),
+                                            color:MyColors().buttonDisabledColor,
+                                            border: Border.all(width: 1, color: MyColors().buttonColor),
+                                          ),
+                                          padding:const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
+                                          child: Icon(Icons.remove,size: 18,)),
+                                      HorizontalSpace(),
+                                      textCustom('2', 18,fontWeight: FontWeight.bold),
+                                      HorizontalSpace(),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(12),
+                                            color:MyColors().buttonDisabledColor,
+                                            border: Border.all(width: 1, color: MyColors().buttonColor),
+                                          ),
+                                          padding:const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
+                                          child: Icon(Icons.add,size: 18,))
+                                    ],
+                                  )
                                 ],
                               )
                             ],
                           )
-                        ],
-                      )
-                  ).onTap(() async {
+                      ).onTap(() async {
 
-                  });
+                      }),
+                      Container(color: Colors.grey.withOpacity(0.6),width: deviceWidth(context),height: 3.4,)
+                    ],
+                  );
                 }),
           )
         ],
@@ -248,33 +265,73 @@ class _CartPageState extends State<CartPage> {
       padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       margin: EdgeInsets.symmetric(horizontal: 10,),
       decoration: BoxDecoration(
-        color: MyColors().buttonDisabledColor,
+        color: MyColors().buttonColor,
         borderRadius: BorderRadius.circular(10)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          textCustom('Payment Summary', 18,fontWeight: FontWeight.bold),
-          VerticalSpace(height: 14,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              textCustom('Products Total', 14),
-              textCustom('800', 16,fontWeight: FontWeight.bold)
+              textCustom('Order Summary', 18,fontWeight: FontWeight.bold,color: Colors.white),
+              Icon(Icons.more_horiz,color: Colors.white,).onTap(() {
+                isVisible = !isVisible;
+                setState(() {
+
+                });
+              })
             ],
           ),
-          VerticalSpace(),
-          Container(
-            height: 1,
-            width: deviceWidth(context),
-            color: Colors.white38,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              textCustom('Order details', 18,fontWeight: FontWeight.bold,color: Colors.white60),
+              textCustom('${DateTime.now().day}/' '${DateTime.now().month}/' '${DateTime.now().year}', 14,color: Colors.white60)
+            ],
           ),
+          VerticalSpace(height: 14,),
+          Visibility(
+            visible: isVisible,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    textCustom('Sub Total', 14,color: Colors.white),
+                    textCustom('800', 16,fontWeight: FontWeight.bold,color: Colors.white)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    textCustom('Discount', 14,color: Colors.white),
+                    textCustom('80', 16,fontWeight: FontWeight.bold,color: Colors.white)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    textCustom('Tax', 14,color: Colors.white),
+                    textCustom('800', 16,fontWeight: FontWeight.bold,color: Colors.white)
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          VerticalSpace(),
+          // Container(
+          //   height: 1,
+          //   width: deviceWidth(context),
+          //   color: Colors.white38,
+          // ),
           VerticalSpace(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              textCustom('Minimum Payable Amount', 14),
-              textCustom('200', 16,fontWeight: FontWeight.bold)
+              textCustom('Total', 14,color: Colors.white),
+              textCustom('8000', 16,fontWeight: FontWeight.bold,color: Colors.white)
             ],
           ),
         ],
@@ -284,31 +341,15 @@ class _CartPageState extends State<CartPage> {
 
   Widget costBarWidget(){
     return  Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
-      color: MyColors().buttonColor,
-      width: deviceHeight(context),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              textCustom('Payable Amount', 14,color: Colors.white),
-              textCustom('200', 18,fontWeight: FontWeight.bold,color: Colors.white)
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50)
-            ),
-            child: Icon(Icons.arrow_forward_ios,color: Colors.deepOrange,),
-          ).onTap(() async {
-            _showSnackBar('Payment Screen Will come soon');
-          })
-        ],
+      decoration: BoxDecoration(
+          color: MyColors().buttonColor,
+          borderRadius: BorderRadius.circular(10)
       ),
+      margin: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 14),
+
+      width: deviceHeight(context)/1.6,
+      child: Center(child: textCustom('Check Out', 18,color: Colors.white,fontWeight: FontWeight.bold)),
     );
   }
 

@@ -24,6 +24,7 @@ class _SignUpScreenState extends State<SignupScreen> {
   TextEditingController mobileController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   int gender = 0;
   String nameError = '';
@@ -32,6 +33,7 @@ class _SignUpScreenState extends State<SignupScreen> {
 
   _SignUpScreenState();
   bool isShowPasswrod = false;
+  bool isShowConfirmPasswrod = false;
 
 
   @override
@@ -87,9 +89,7 @@ class _SignUpScreenState extends State<SignupScreen> {
     return Stack(
       children: <Widget>[
         Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
-          ),
+          color: MyColors().backGroundColor,
           padding: const EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -98,7 +98,6 @@ class _SignUpScreenState extends State<SignupScreen> {
               VerticalSpace(
                 height: 10,
               ),
-
               //BODY
               Expanded(
                 child: Container(
@@ -107,24 +106,15 @@ class _SignUpScreenState extends State<SignupScreen> {
                     child: Column(
                       //crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        VerticalSpace(height: deviceHeight(context)*0.10,),
+                        VerticalSpace(height: deviceHeight(context)*0.05,),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             //BODY WIDGETS
-
                             Container(
-                                child: textCustom(
-                                    "Create your account", 22,
-                                    color: MyColors().black,
-                                    fontWeight: FontWeight.w500)),
-
-                            Container(
-                              child: textCustom(
-                                  "Enter your details to continue", 15,
-                                  color: MyColors().black),
+                              child: Image.asset('assets/app_logo.png',height: 140,),
                             ),
-                            VerticalSpace(height: deviceHeight(context)*0.10,),
+                            VerticalSpace(height: deviceHeight(context)*0.05,),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -140,14 +130,15 @@ class _SignUpScreenState extends State<SignupScreen> {
                                 VerticalSpace(
                                   height: 16,
                                 ),
-                                userNameWidget(),
-                                VerticalSpace(
-                                  height: 16,
-                                ),
+                                // userNameWidget(),
+                                // VerticalSpace(
+                                //   height: 16,
+                                // ),
                                 passwordWidget(),
                                 VerticalSpace(
                                   height: 16,
                                 ),
+                                confirmPasswordWidget()
                                 // genderWidget(),
                                 // VerticalSpace(
                                 //   height: 16,
@@ -204,7 +195,8 @@ class _SignUpScreenState extends State<SignupScreen> {
 
   Widget createAccountButtonWidget() {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 12),
+      width: deviceWidth(context)/2,
+      margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 60),
       child: CustomButton(
         onClick: () async {
           var res = await Navigator.push(
@@ -220,7 +212,7 @@ class _SignUpScreenState extends State<SignupScreen> {
             ),
           );
         },
-        buttonText: "Create Account",
+        buttonText: "SIGN UP",
         isDisabled:false,
         //nameController.text.isNotEmpty && mobileController.text.length==10 && gender>0 && emailController.text.isNotEmpty && userNameController.text.isNotEmpty && passwordController.text.isNotEmpty ? false : true,
       ),
@@ -233,9 +225,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
         decoration: BoxDecoration(
-          border: Border.all(width: 1, color: MyColors().buttonColor),
+          // border: Border.all(width: 1, color: MyColors().buttonColor),
           borderRadius: BorderRadius.circular(16.0),
-          color: MyColors().backGroundColor,
+          color: MyColors().buttonColor.withOpacity(0.3),
         ),
       child: Container(
         //  width: deviceWidth(context) * 0.54,
@@ -253,7 +245,7 @@ class _SignUpScreenState extends State<SignupScreen> {
             hintText: 'Enter Name',
             contentPadding: EdgeInsets.only(left: 10),
             hintStyle: TextStyle(
-                color: MyColors().black.withOpacity(0.4), fontSize: 14),
+                color: MyColors().grey, fontSize: 16),
           ),
         ),
       ),
@@ -266,9 +258,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().buttonColor),
+        // border: Border.all(width: 1, color: MyColors().buttonColor),
         borderRadius: BorderRadius.circular(16.0),
-        color: MyColors().backGroundColor,
+        color: MyColors().buttonColor.withOpacity(0.3),
       ),
       child: Container(
         //  width: deviceWidth(context) * 0.54,
@@ -298,9 +290,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().buttonColor),
+        // border: Border.all(width: 1, color: MyColors().buttonColor),
         borderRadius: BorderRadius.circular(16.0),
-        color: MyColors().backGroundColor,
+        color: MyColors().buttonColor.withOpacity(0.3),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -328,7 +320,7 @@ class _SignUpScreenState extends State<SignupScreen> {
                     hintText: 'Enter Mobile Number',
                     contentPadding: EdgeInsets.only(left: 10),
                     hintStyle: TextStyle(
-                        color: MyColors().black.withOpacity(0.4), fontSize: 14),
+                        color: MyColors().grey, fontSize: 16),
                   ),
                 ),
               ),
@@ -344,9 +336,9 @@ class _SignUpScreenState extends State<SignupScreen> {
       width: deviceWidth(context),
       margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().buttonColor),
+        // border: Border.all(width: 1, color: MyColors().buttonColor),
         borderRadius: BorderRadius.circular(16.0),
-        color: MyColors().backGroundColor,
+        color: MyColors().buttonColor.withOpacity(0.3),
       ),
       child: Container(
         width: deviceWidth(context) * 0.54,
@@ -361,7 +353,7 @@ class _SignUpScreenState extends State<SignupScreen> {
             hintText: 'Enter Email Address',
             contentPadding: EdgeInsets.only(left: 10),
             hintStyle: TextStyle(
-                color: MyColors().black.withOpacity(0.4), fontSize: 14),
+                color: MyColors().grey, fontSize: 16),
           ),
         ),
       ),
@@ -375,9 +367,9 @@ class _SignUpScreenState extends State<SignupScreen> {
 
       padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: MyColors().buttonColor),
+        // border: Border.all(width: 1, color: MyColors().buttonColor),
         borderRadius: BorderRadius.circular(16.0),
-        color: MyColors().backGroundColor,
+        color: MyColors().buttonColor.withOpacity(0.3),
       ),
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -408,12 +400,71 @@ class _SignUpScreenState extends State<SignupScreen> {
                       border: InputBorder.none,
                       hintText: 'Enter Password',
                       contentPadding: EdgeInsets.only(left: 10),
-                      hintStyle: TextStyle(color: MyColors().black.withOpacity(0.4),fontSize: 14),
+                      hintStyle: TextStyle(color: MyColors().grey,fontSize: 16),
                     ),
                   ),
                 ),
                 Icon( isShowPasswrod ? Icons.visibility_off :Icons.visibility,color: MyColors().black,).onTap(() {
                   isShowPasswrod = !isShowPasswrod;
+                  setState(() {
+
+                  });
+
+                })
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    );
+  }
+
+  Widget confirmPasswordWidget(){
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 16),
+
+      padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
+      decoration: BoxDecoration(
+        // border: Border.all(width: 1, color: MyColors().buttonColor),
+        borderRadius: BorderRadius.circular(16.0),
+        color: MyColors().buttonColor.withOpacity(0.3),
+      ),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+              children: [
+                Container(
+                  width: deviceWidth(context) *0.74,
+                  child: TextField(
+                    cursorColor: Colors.black,
+                    obscureText: isShowConfirmPasswrod,
+                    style: const TextStyle(color: Colors.black),
+                    onChanged: (value){
+                      setState(() {
+                        if(value.length == 10){
+                          KeyBoardUtils().hideKeyboard(context);
+                        }
+                      });
+                    },
+                    controller: confirmPasswordController,
+                    keyboardType: TextInputType.text,
+                    decoration:  InputDecoration(
+                      counterText: '',
+                      border: InputBorder.none,
+                      hintText: 'Confirm Password',
+                      contentPadding: EdgeInsets.only(left: 10),
+                      hintStyle: TextStyle(color: MyColors().grey,fontSize: 16),
+                    ),
+                  ),
+                ),
+                Icon( isShowConfirmPasswrod ? Icons.visibility_off :Icons.visibility,color: MyColors().black,).onTap(() {
+                  isShowConfirmPasswrod = !isShowConfirmPasswrod;
                   setState(() {
 
                   });

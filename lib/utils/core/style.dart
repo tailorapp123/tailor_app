@@ -32,14 +32,14 @@ class MyColors {
    Color grey200 = HexColor("#D9D9D9");
 
    Color primaryColor = HexColor('#FFAB00',);
-   Color buttonColor = Colors.pink.withOpacity(0.6);
+   Color buttonColor = HexColor('#cc248c');
    Color buttonDisabledColor = Colors.pink.withOpacity(0.3);
    Color primaryColorWithOpacity = Color(int.parse("0x001B42")).withOpacity(0.6);
    Color primaryColorWithLessOpacity = Color(int.parse("0x001B42"))
       .withOpacity(0.2);
    Color textPrimary = HexColor("#333333");
    Color textSecondary = HexColor("#ffffff");
-   Color backGroundColor = Colors.pink.withOpacity(0.1);
+   Color backGroundColor = Colors.pink.withOpacity(0.001);
    Color orangeColor = HexColor("#FF6B00");
    Color secondaryColor = HexColor("#04CE5E");
    Color white = Colors.white;

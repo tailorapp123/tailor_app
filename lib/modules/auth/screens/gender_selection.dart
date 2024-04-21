@@ -88,9 +88,10 @@ class _GenderSelectionPageState extends State<GenderSelectionPage> {
       child: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
-            ),
+            color: MyColors().backGroundColor,
+            // decoration: BoxDecoration(
+            //     image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
+            // ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[

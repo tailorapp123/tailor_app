@@ -82,27 +82,30 @@ class _LoginScreeState extends State<LoginScreen> {
       child: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/background_image.png'),fit: BoxFit.fill)
-            ),
+            color: MyColors().backGroundColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 //APP BAR
-                Column(
-                  children: [
-                    VerticalSpace(height: deviceHeight(context)*0.10,),
-                    Container(margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: textCustom("Hello", 22,color: MyColors().black,fontWeight: FontWeight.bold)).onTap(() {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen()));
-                    }),
-                    Container(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: textCustom("Login to your account", 15,color: Colors.black),
-                    ),
-                  ],
+                VerticalSpace(height: deviceHeight(context)*0.05,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          // padding: EdgeInsets.only(left: 14),
+                          child: textCustom('Sign In', 20,fontWeight: FontWeight.bold)),
+                      VerticalSpace(height: 14,),
+                      Container(height:1.6,width: deviceWidth(context),color: Colors.black,),
+                      VerticalSpace(),
+                    ],
+                  ),
                 ),
-
+                VerticalSpace(height: 12,),
+                Container(
+                  child: Image.asset('assets/new_logo.jpeg',height: 120,),
+                ),
 
                 //BODY
                 Expanded(
@@ -112,7 +115,7 @@ class _LoginScreeState extends State<LoginScreen> {
                       child: Column(
                         //crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          VerticalSpace(height: deviceHeight(context)*0.20,),
+                          VerticalSpace(height: deviceHeight(context)*0.10,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children:  [
@@ -121,9 +124,9 @@ class _LoginScreeState extends State<LoginScreen> {
                                 margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 16),
                                 padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
                                 decoration: BoxDecoration(
-                                  border: Border.all(width: 1, color: MyColors().buttonColor),
+                                  // border: Border.all(width: 1, color: MyColors().buttonColor),
                                   borderRadius: BorderRadius.circular(16.0),
-                                  color: MyColors().backGroundColor,
+                                  color: MyColors().buttonColor.withOpacity(0.3),
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -148,9 +151,9 @@ class _LoginScreeState extends State<LoginScreen> {
                                             decoration:  InputDecoration(
                                               counterText: '',
                                               border: InputBorder.none,
-                                              hintText: 'Enter User Name',
+                                              hintText: 'Username',
                                               contentPadding: EdgeInsets.only(left: 10),
-                                              hintStyle: TextStyle(color: MyColors().black.withOpacity(0.8),fontSize: 14),
+                                              hintStyle: TextStyle(color: MyColors().grey.withOpacity(0.8),fontSize: 16),
                                             ),
                                           ),
                                         ),
@@ -166,9 +169,9 @@ class _LoginScreeState extends State<LoginScreen> {
 
                                 padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 10),
                                 decoration: BoxDecoration(
-                                  border: Border.all(width: 1, color: MyColors().buttonColor),
+                                  // border: Border.all(width: 1, color: MyColors().buttonColor),
                                   borderRadius: BorderRadius.circular(16.0),
-                                  color: MyColors().backGroundColor,
+                                  color: MyColors().buttonColor.withOpacity(0.3),
                                 ),
                                 child: Row(
                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,9 +197,9 @@ class _LoginScreeState extends State<LoginScreen> {
                                             decoration:  InputDecoration(
                                               counterText: '',
                                               border: InputBorder.none,
-                                              hintText: 'Enter Password',
+                                              hintText: 'Password',
                                               contentPadding: EdgeInsets.only(left: 10),
-                                              hintStyle: TextStyle(color: MyColors().black.withOpacity(0.8),fontSize: 14),
+                                              hintStyle: TextStyle(color: MyColors().grey.withOpacity(0.8),fontSize: 16),
                                             ),
                                           ),
                                         ),
@@ -213,12 +216,24 @@ class _LoginScreeState extends State<LoginScreen> {
                                   ],
                                 ),
                               ),
+                              // Container(
+                              //   padding: EdgeInsets.symmetric(horizontal: 24,vertical: 10),
+                              //   alignment: Alignment.centerRight,
+                              //   child: textCustom("Forgot Password?",14, color: MyColors().black,fontWeight: FontWeight.bold).onTap(() {
+                              //
+                              //   }),
+                              // ),
+                              VerticalSpace(height: 36,),
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 24,vertical: 10),
-                                alignment: Alignment.centerRight,
-                                child: textCustom("Forgot Password?",14, color: MyColors().black,fontWeight: FontWeight.bold).onTap(() {
-
-                                }),
+                                width: deviceWidth(context)/1.8,
+                                margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 16),
+                                child: CustomButton(
+                                  onClick: () async {
+                                    navigateToHomeScreen();
+                                  },
+                                  buttonText: "Login",
+                                  height: 60,
+                                  isDisabled: false,),
                               ),
                               VerticalSpace(height: 20,),
 
@@ -233,25 +248,15 @@ class _LoginScreeState extends State<LoginScreen> {
 
                 //BOTTOM WIDGETS
 
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 16),
-                  child: CustomButton(
-                    onClick: () async {
-                      navigateToHomeScreen();
-                  },
-                    buttonText: "Login",
-                    height: 60,
-                    isDisabled: false,)
-                  ,
-                ),
+
                 VerticalSpace(height: 24,),
                 Container(
                   color: MyColors().transparent,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      textCustom("Don’t have an account? ", 14,color: MyColors().black,textAlign: TextAlign.center),
-                      textCustom(" Signup", 14,color: MyColors().black,fontWeight: FontWeight.w600)
+                      textCustom("Signup", 18,color: MyColors().black,textAlign: TextAlign.center,fontWeight: FontWeight.w500),
+                      textCustom(" Forget Password", 18,color: MyColors().black,fontWeight: FontWeight.w500)
                     ],
                   ),
                 ).onTap(() async {
